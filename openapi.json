@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "backend-recursoshumanos Prueba2 - Sergio Barahona",
+    "title": "backend-recursoshumanos",
     "version": "0.0.1",
     "description": "backend-recursoshumanos",
     "contact": {
