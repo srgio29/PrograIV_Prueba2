@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Aspirantes} from './aspirantes.model';
 
 @model()
 export class Plazas extends Entity {
@@ -57,6 +58,8 @@ export class Plazas extends Entity {
   })
   bilingue: boolean;
 
+  @hasMany(() => Aspirantes)
+  aspirantes: Aspirantes[];
 
   constructor(data?: Partial<Plazas>) {
     super(data);

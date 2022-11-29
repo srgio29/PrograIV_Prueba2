@@ -1,0 +1,1914 @@
+
+> backend-recursoshumanos@0.0.1 preopenapi-spec
+> npm run build
+
+
+> backend-recursoshumanos@0.0.1 build
+> lb-tsc
+
+
+> backend-recursoshumanos@0.0.1 openapi-spec
+> node ./dist/openapi-spec
+
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "backend-recursoshumanos",
+    "version": "0.0.1",
+    "description": "backend-recursoshumanos",
+    "contact": {
+      "name": "srgio29",
+      "email": "sergio.barahona1994@gmail.com"
+    }
+  },
+  "paths": {
+    "/aspirantes/count": {
+      "get": {
+        "x-controller-name": "AspirantesController",
+        "x-operation-name": "count",
+        "tags": [
+          "AspirantesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Aspirantes model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Aspirantes.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Aspirantes>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "AspirantesController.count"
+      }
+    },
+    "/aspirantes/{id}/plazas": {
+      "get": {
+        "x-controller-name": "AspirantesPlazasController",
+        "x-operation-name": "getPlazas",
+        "tags": [
+          "AspirantesPlazasController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plazas belonging to Aspirantes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Plazas"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "AspirantesPlazasController.getPlazas"
+      }
+    },
+    "/aspirantes/{id}": {
+      "put": {
+        "x-controller-name": "AspirantesController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "AspirantesController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Aspirantes PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Aspirantes"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "AspirantesController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "AspirantesController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "AspirantesController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Aspirantes PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AspirantesPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "AspirantesController.updateById"
+      },
+      "get": {
+        "x-controller-name": "AspirantesController",
+        "x-operation-name": "findById",
+        "tags": [
+          "AspirantesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Aspirantes model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AspirantesWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Aspirantes.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "AspirantesController.findById"
+      },
+      "delete": {
+        "x-controller-name": "AspirantesController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "AspirantesController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Aspirantes DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "AspirantesController.deleteById"
+      }
+    },
+    "/aspirantes": {
+      "post": {
+        "x-controller-name": "AspirantesController",
+        "x-operation-name": "create",
+        "tags": [
+          "AspirantesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Aspirantes model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Aspirantes"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewAspirantes"
+              }
+            }
+          }
+        },
+        "operationId": "AspirantesController.create"
+      },
+      "patch": {
+        "x-controller-name": "AspirantesController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "AspirantesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Aspirantes PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Aspirantes.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Aspirantes>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AspirantesPartial"
+              }
+            }
+          }
+        },
+        "operationId": "AspirantesController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "AspirantesController",
+        "x-operation-name": "find",
+        "tags": [
+          "AspirantesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Aspirantes model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AspirantesWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Aspirantes.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "AspirantesController.find"
+      }
+    },
+    "/ping": {
+      "get": {
+        "x-controller-name": "PingController",
+        "x-operation-name": "ping",
+        "tags": [
+          "PingController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ping Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PingResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "PingController.ping"
+      }
+    },
+    "/plazas/count": {
+      "get": {
+        "x-controller-name": "PlazasController",
+        "x-operation-name": "count",
+        "tags": [
+          "PlazasController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plazas model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Plazas.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Plazas>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PlazasController.count"
+      }
+    },
+    "/plazas/{id}/aspirantes": {
+      "post": {
+        "x-controller-name": "PlazasAspirantesController",
+        "x-operation-name": "create",
+        "tags": [
+          "PlazasAspirantesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plazas model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Aspirantes"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewAspirantesInPlazas"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "PlazasAspirantesController.create"
+      },
+      "patch": {
+        "x-controller-name": "PlazasAspirantesController",
+        "x-operation-name": "patch",
+        "tags": [
+          "PlazasAspirantesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plazas.Aspirantes PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Aspirantes.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Aspirantes>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AspirantesPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "PlazasAspirantesController.patch"
+      },
+      "get": {
+        "x-controller-name": "PlazasAspirantesController",
+        "x-operation-name": "find",
+        "tags": [
+          "PlazasAspirantesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Plazas has many Aspirantes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Aspirantes"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PlazasAspirantesController.find"
+      },
+      "delete": {
+        "x-controller-name": "PlazasAspirantesController",
+        "x-operation-name": "delete",
+        "tags": [
+          "PlazasAspirantesController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plazas.Aspirantes DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Aspirantes.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Aspirantes>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PlazasAspirantesController.delete"
+      }
+    },
+    "/plazas/{id}": {
+      "put": {
+        "x-controller-name": "PlazasController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "PlazasController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Plazas PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Plazas"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "PlazasController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "PlazasController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "PlazasController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Plazas PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlazasPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "PlazasController.updateById"
+      },
+      "get": {
+        "x-controller-name": "PlazasController",
+        "x-operation-name": "findById",
+        "tags": [
+          "PlazasController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plazas model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlazasWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Plazas.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PlazasController.findById"
+      },
+      "delete": {
+        "x-controller-name": "PlazasController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "PlazasController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Plazas DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "PlazasController.deleteById"
+      }
+    },
+    "/plazas": {
+      "post": {
+        "x-controller-name": "PlazasController",
+        "x-operation-name": "create",
+        "tags": [
+          "PlazasController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plazas model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Plazas"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewPlazas"
+              }
+            }
+          }
+        },
+        "operationId": "PlazasController.create"
+      },
+      "patch": {
+        "x-controller-name": "PlazasController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "PlazasController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plazas PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Plazas.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Plazas>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlazasPartial"
+              }
+            }
+          }
+        },
+        "operationId": "PlazasController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "PlazasController",
+        "x-operation-name": "find",
+        "tags": [
+          "PlazasController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Plazas model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PlazasWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Plazas.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PlazasController.find"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Plazas": {
+        "title": "Plazas",
+        "type": "object",
+        "properties": {
+          "id_plazas": {
+            "type": "string"
+          },
+          "nombre_cargo": {
+            "type": "string"
+          },
+          "disponible": {
+            "type": "boolean"
+          },
+          "fecha_postulada": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fecha_expiracion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "experiencia": {
+            "type": "number"
+          },
+          "titulo": {
+            "type": "boolean"
+          },
+          "ubicacion": {
+            "type": "string"
+          },
+          "bilingue": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre_cargo",
+          "disponible",
+          "fecha_postulada",
+          "fecha_expiracion",
+          "experiencia",
+          "titulo",
+          "ubicacion",
+          "bilingue"
+        ],
+        "additionalProperties": false
+      },
+      "Aspirantes": {
+        "title": "Aspirantes",
+        "type": "object",
+        "properties": {
+          "id_aspirantes": {
+            "type": "string"
+          },
+          "nombre_aspirante": {
+            "type": "string"
+          },
+          "cargo_a_aplicar": {
+            "type": "string"
+          },
+          "titulo": {
+            "type": "boolean"
+          },
+          "experiencia": {
+            "type": "number"
+          },
+          "ubicacion": {
+            "type": "string"
+          },
+          "bilingue": {
+            "type": "boolean"
+          },
+          "celular": {
+            "type": "number"
+          },
+          "email": {
+            "type": "string"
+          },
+          "plazasId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nombre_aspirante",
+          "cargo_a_aplicar",
+          "titulo",
+          "experiencia",
+          "ubicacion",
+          "bilingue",
+          "celular",
+          "email"
+        ],
+        "additionalProperties": false
+      },
+      "NewAspirantes": {
+        "title": "NewAspirantes",
+        "type": "object",
+        "description": "(tsType: Omit<Aspirantes, 'id_aspirantes'>, schemaOptions: { title: 'NewAspirantes', exclude: [ 'id_aspirantes' ] })",
+        "properties": {
+          "nombre_aspirante": {
+            "type": "string"
+          },
+          "cargo_a_aplicar": {
+            "type": "string"
+          },
+          "titulo": {
+            "type": "boolean"
+          },
+          "experiencia": {
+            "type": "number"
+          },
+          "ubicacion": {
+            "type": "string"
+          },
+          "bilingue": {
+            "type": "boolean"
+          },
+          "celular": {
+            "type": "number"
+          },
+          "email": {
+            "type": "string"
+          },
+          "plazasId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nombre_aspirante",
+          "cargo_a_aplicar",
+          "titulo",
+          "experiencia",
+          "ubicacion",
+          "bilingue",
+          "celular",
+          "email"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Aspirantes, 'id_aspirantes'>"
+      },
+      "PlazasWithRelations": {
+        "title": "PlazasWithRelations",
+        "type": "object",
+        "description": "(tsType: PlazasWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id_plazas": {
+            "type": "string"
+          },
+          "nombre_cargo": {
+            "type": "string"
+          },
+          "disponible": {
+            "type": "boolean"
+          },
+          "fecha_postulada": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fecha_expiracion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "experiencia": {
+            "type": "number"
+          },
+          "titulo": {
+            "type": "boolean"
+          },
+          "ubicacion": {
+            "type": "string"
+          },
+          "bilingue": {
+            "type": "boolean"
+          },
+          "aspirantes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AspirantesWithRelations"
+            }
+          }
+        },
+        "required": [
+          "nombre_cargo",
+          "disponible",
+          "fecha_postulada",
+          "fecha_expiracion",
+          "experiencia",
+          "titulo",
+          "ubicacion",
+          "bilingue"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "PlazasWithRelations"
+      },
+      "AspirantesWithRelations": {
+        "title": "AspirantesWithRelations",
+        "type": "object",
+        "description": "(tsType: AspirantesWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id_aspirantes": {
+            "type": "string"
+          },
+          "nombre_aspirante": {
+            "type": "string"
+          },
+          "cargo_a_aplicar": {
+            "type": "string"
+          },
+          "titulo": {
+            "type": "boolean"
+          },
+          "experiencia": {
+            "type": "number"
+          },
+          "ubicacion": {
+            "type": "string"
+          },
+          "bilingue": {
+            "type": "boolean"
+          },
+          "celular": {
+            "type": "number"
+          },
+          "email": {
+            "type": "string"
+          },
+          "plazasId": {
+            "type": "string"
+          },
+          "plazas": {
+            "$ref": "#/components/schemas/PlazasWithRelations"
+          }
+        },
+        "required": [
+          "nombre_aspirante",
+          "cargo_a_aplicar",
+          "titulo",
+          "experiencia",
+          "ubicacion",
+          "bilingue",
+          "celular",
+          "email"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "AspirantesWithRelations"
+      },
+      "AspirantesPartial": {
+        "title": "AspirantesPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Aspirantes>, schemaOptions: { partial: true })",
+        "properties": {
+          "id_aspirantes": {
+            "type": "string"
+          },
+          "nombre_aspirante": {
+            "type": "string"
+          },
+          "cargo_a_aplicar": {
+            "type": "string"
+          },
+          "titulo": {
+            "type": "boolean"
+          },
+          "experiencia": {
+            "type": "number"
+          },
+          "ubicacion": {
+            "type": "string"
+          },
+          "bilingue": {
+            "type": "boolean"
+          },
+          "celular": {
+            "type": "number"
+          },
+          "email": {
+            "type": "string"
+          },
+          "plazasId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Aspirantes>"
+      },
+      "NewAspirantesInPlazas": {
+        "title": "NewAspirantesInPlazas",
+        "type": "object",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Aspirantes, 'id_aspirantes'>, 'plazasId'>, schemaOptions: { title: 'NewAspirantesInPlazas', exclude: [ 'id_aspirantes' ], optional: [ 'plazasId' ] })",
+        "properties": {
+          "nombre_aspirante": {
+            "type": "string"
+          },
+          "cargo_a_aplicar": {
+            "type": "string"
+          },
+          "titulo": {
+            "type": "boolean"
+          },
+          "experiencia": {
+            "type": "number"
+          },
+          "ubicacion": {
+            "type": "string"
+          },
+          "bilingue": {
+            "type": "boolean"
+          },
+          "celular": {
+            "type": "number"
+          },
+          "email": {
+            "type": "string"
+          },
+          "plazasId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nombre_aspirante",
+          "cargo_a_aplicar",
+          "titulo",
+          "experiencia",
+          "ubicacion",
+          "bilingue",
+          "celular",
+          "email"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Aspirantes, 'id_aspirantes'>, 'plazasId'>"
+      },
+      "NewPlazas": {
+        "title": "NewPlazas",
+        "type": "object",
+        "description": "(tsType: Omit<Plazas, 'id_plazas'>, schemaOptions: { title: 'NewPlazas', exclude: [ 'id_plazas' ] })",
+        "properties": {
+          "nombre_cargo": {
+            "type": "string"
+          },
+          "disponible": {
+            "type": "boolean"
+          },
+          "fecha_postulada": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fecha_expiracion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "experiencia": {
+            "type": "number"
+          },
+          "titulo": {
+            "type": "boolean"
+          },
+          "ubicacion": {
+            "type": "string"
+          },
+          "bilingue": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "nombre_cargo",
+          "disponible",
+          "fecha_postulada",
+          "fecha_expiracion",
+          "experiencia",
+          "titulo",
+          "ubicacion",
+          "bilingue"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Plazas, 'id_plazas'>"
+      },
+      "PlazasPartial": {
+        "title": "PlazasPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Plazas>, schemaOptions: { partial: true })",
+        "properties": {
+          "id_plazas": {
+            "type": "string"
+          },
+          "nombre_cargo": {
+            "type": "string"
+          },
+          "disponible": {
+            "type": "boolean"
+          },
+          "fecha_postulada": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fecha_expiracion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "experiencia": {
+            "type": "number"
+          },
+          "titulo": {
+            "type": "boolean"
+          },
+          "ubicacion": {
+            "type": "string"
+          },
+          "bilingue": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Plazas>"
+      },
+      "loopback.Count": {
+        "type": "object",
+        "title": "loopback.Count",
+        "x-typescript-type": "@loopback/repository#Count",
+        "properties": {
+          "count": {
+            "type": "number"
+          }
+        }
+      },
+      "Aspirantes.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "Aspirantes.ScopeFilter"
+      },
+      "Aspirantes.IncludeFilter.Items": {
+        "title": "Aspirantes.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/Aspirantes.ScopeFilter"
+          }
+        }
+      },
+      "Aspirantes.Filter": {
+        "type": "object",
+        "title": "Aspirantes.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id_aspirantes": {
+                    "type": "boolean"
+                  },
+                  "nombre_aspirante": {
+                    "type": "boolean"
+                  },
+                  "cargo_a_aplicar": {
+                    "type": "boolean"
+                  },
+                  "titulo": {
+                    "type": "boolean"
+                  },
+                  "experiencia": {
+                    "type": "boolean"
+                  },
+                  "ubicacion": {
+                    "type": "boolean"
+                  },
+                  "bilingue": {
+                    "type": "boolean"
+                  },
+                  "celular": {
+                    "type": "boolean"
+                  },
+                  "email": {
+                    "type": "boolean"
+                  },
+                  "plazasId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id_aspirantes",
+                    "nombre_aspirante",
+                    "cargo_a_aplicar",
+                    "titulo",
+                    "experiencia",
+                    "ubicacion",
+                    "bilingue",
+                    "celular",
+                    "email",
+                    "plazasId"
+                  ],
+                  "example": "id_aspirantes"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Aspirantes.Fields"
+          },
+          "include": {
+            "title": "Aspirantes.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Aspirantes.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Aspirantes>"
+      },
+      "Aspirantes.Filter1": {
+        "type": "object",
+        "title": "Aspirantes.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Aspirantes.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id_aspirantes": {
+                    "type": "boolean"
+                  },
+                  "nombre_aspirante": {
+                    "type": "boolean"
+                  },
+                  "cargo_a_aplicar": {
+                    "type": "boolean"
+                  },
+                  "titulo": {
+                    "type": "boolean"
+                  },
+                  "experiencia": {
+                    "type": "boolean"
+                  },
+                  "ubicacion": {
+                    "type": "boolean"
+                  },
+                  "bilingue": {
+                    "type": "boolean"
+                  },
+                  "celular": {
+                    "type": "boolean"
+                  },
+                  "email": {
+                    "type": "boolean"
+                  },
+                  "plazasId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id_aspirantes",
+                    "nombre_aspirante",
+                    "cargo_a_aplicar",
+                    "titulo",
+                    "experiencia",
+                    "ubicacion",
+                    "bilingue",
+                    "celular",
+                    "email",
+                    "plazasId"
+                  ],
+                  "example": "id_aspirantes"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Aspirantes.Fields"
+          },
+          "include": {
+            "title": "Aspirantes.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Aspirantes.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Aspirantes>"
+      },
+      "PingResponse": {
+        "type": "object",
+        "title": "PingResponse",
+        "properties": {
+          "greeting": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "headers": {
+            "type": "object",
+            "properties": {
+              "Content-Type": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "Plazas.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "Plazas.ScopeFilter"
+      },
+      "Plazas.IncludeFilter.Items": {
+        "title": "Plazas.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/Plazas.ScopeFilter"
+          }
+        }
+      },
+      "Plazas.Filter": {
+        "type": "object",
+        "title": "Plazas.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id_plazas": {
+                    "type": "boolean"
+                  },
+                  "nombre_cargo": {
+                    "type": "boolean"
+                  },
+                  "disponible": {
+                    "type": "boolean"
+                  },
+                  "fecha_postulada": {
+                    "type": "boolean"
+                  },
+                  "fecha_expiracion": {
+                    "type": "boolean"
+                  },
+                  "experiencia": {
+                    "type": "boolean"
+                  },
+                  "titulo": {
+                    "type": "boolean"
+                  },
+                  "ubicacion": {
+                    "type": "boolean"
+                  },
+                  "bilingue": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id_plazas",
+                    "nombre_cargo",
+                    "disponible",
+                    "fecha_postulada",
+                    "fecha_expiracion",
+                    "experiencia",
+                    "titulo",
+                    "ubicacion",
+                    "bilingue"
+                  ],
+                  "example": "id_plazas"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Plazas.Fields"
+          },
+          "include": {
+            "title": "Plazas.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Plazas.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Plazas>"
+      },
+      "Plazas.Filter1": {
+        "type": "object",
+        "title": "Plazas.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Plazas.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id_plazas": {
+                    "type": "boolean"
+                  },
+                  "nombre_cargo": {
+                    "type": "boolean"
+                  },
+                  "disponible": {
+                    "type": "boolean"
+                  },
+                  "fecha_postulada": {
+                    "type": "boolean"
+                  },
+                  "fecha_expiracion": {
+                    "type": "boolean"
+                  },
+                  "experiencia": {
+                    "type": "boolean"
+                  },
+                  "titulo": {
+                    "type": "boolean"
+                  },
+                  "ubicacion": {
+                    "type": "boolean"
+                  },
+                  "bilingue": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id_plazas",
+                    "nombre_cargo",
+                    "disponible",
+                    "fecha_postulada",
+                    "fecha_expiracion",
+                    "experiencia",
+                    "titulo",
+                    "ubicacion",
+                    "bilingue"
+                  ],
+                  "example": "id_plazas"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Plazas.Fields"
+          },
+          "include": {
+            "title": "Plazas.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Plazas.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Plazas>"
+      }
+    }
+  }
+}
